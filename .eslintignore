@@ -1,0 +1,11 @@
+# /node_modules/* in the project root is ignored by default
+# build artefacts
+dist/*
+lib
+template-client
+template-server
+coverage/*
+# data definition files
+**/*.d.ts
+# 3rd party libs
+# custom definition files

@@ -1,0 +1,63 @@
+{
+  "name": "create-graphql",
+  "version": "1.0.0",
+  "description": "Apollo GraphQL CLI",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' -r esm src/index.ts",
+    "build": "tsc -p .",
+    "refresh": "rm -rf ./node_modules ./yarn.lock && yarn install"
+  },
+  "keywords": [
+    "apollo",
+    "graphql",
+    "CLI",
+    "node.js",
+    "typescript"
+  ],
+  "author": "Charlie.Lang",
+  "bin": {
+    "create-graphql-app": "./lib/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "esm": "^3.2.25",
+    "execa": "^3.2.0",
+    "figlet": "^1.2.4",
+    "inquirer": "^7.0.0",
+    "listr": "^0.14.3",
+    "through2": "^3.0.1",
+    "vinyl-fs": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/clear": "^0.1.0",
+    "@types/figlet": "^1.2.0",
+    "@types/inquirer": "^6.5.0",
+    "@types/listr": "^0.14.2",
+    "@types/through2": "^2.0.34",
+    "@types/vinyl-fs": "^2.4.11",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

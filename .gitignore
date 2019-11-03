@@ -1,0 +1,26 @@
+# misc
+.DS_Store
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+package-lock.json
+node_modules
+
+.env
+.rpt2_cache
+
+build
+dist
+output
+lib
+public/index.d.ts
+public/bundle.*
+public/polyfill.d.ts
+
+# Logs
+logs
+*.log
+
+coverage/

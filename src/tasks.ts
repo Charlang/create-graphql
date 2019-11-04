@@ -4,6 +4,7 @@ import vfs from 'vinyl-fs';
 import through2 from 'through2';
 import execa from 'execa';
 import listr from 'listr';
+import chalk from 'chalk';
 
 const copyTemplateFiles = async (options: any) => {
   // @ts-ignore
@@ -53,7 +54,7 @@ const installDependencies = async (options: any) => {
 
 const tasks = (options: any) => new listr([
   {
-    title: '[1-3] Copy templates files',
+    title: `[1-3] Copying templates files into ${chalk.italic.redBright.bold('./' + options.path)}`,
     task: async () => copyTemplateFiles(options),
   },
   {
@@ -64,7 +65,7 @@ const tasks = (options: any) => new listr([
       return;
     },
     skip: () =>
-      !options.runInstall
+      !options.install
         ? 'Pass --install to automatically install dependencies'
         : undefined,
   },
@@ -78,7 +79,7 @@ const tasks = (options: any) => new listr([
     },
     enabled: ctx => ctx.start === true,
     skip: () =>
-      !options.startDev
+      !options.start
         ? 'Pass --watch to automatically start dev watch mode'
         : undefined,
   },

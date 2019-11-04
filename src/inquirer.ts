@@ -3,17 +3,20 @@ import chalk from 'chalk';
 
 const promptForMissingOptions = async (options?: any) => {
  
-  const questions = [];
-  if (!options.appTemplate) {
-    questions.push({
+  let templateAnswers = {
+    template: 'server'
+  };
+  if (!options.template) {
+    templateAnswers = await inquirer.prompt([{
       type: 'list',
-      name: 'appTemplate',
+      name: 'template',
       message: 'Which project template to use ?',
       choices: ['Client', 'Server'],
       default: 'Server'
-    });
+    }]);
   }
-
+  
+  const questions = [];
   if (!options.federation) {
     questions.push({
       type: 'confirm',
@@ -32,28 +35,28 @@ const promptForMissingOptions = async (options?: any) => {
     });
   }
 
-  if (!options.subPath) {
+  if (!options.path) {
     questions.push({
       type: 'input',
-      name: 'subPath',
-      message: `Project path (default ${chalk.redBright.bold('./test')})`,
-      default: 'test',
+      name: 'path',
+      message: `Project path (default ${chalk.italic.redBright.bold('./' + (templateAnswers.template || '').toLowerCase())})`,
+      default: (templateAnswers.template || 'server').toLowerCase(),
     });
   }
 
-  if (!options.runInstall) {
+  if (!options.install) {
     questions.push({
       type: 'confirm',
-      name: 'runInstall',
+      name: 'install',
       message: 'Install dependencies in the project ?',
       default: true,
     });
   }
 
-  if (!options.startDev) {
+  if (!options.start) {
     questions.push({
       type: 'confirm',
-      name: 'startDev',
+      name: 'start',
       message: 'Start dev mode ?',
       default: true,
     });
@@ -62,12 +65,12 @@ const promptForMissingOptions = async (options?: any) => {
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
-    appTemplate: options.appTemplate || answers.appTemplate,
+    template: options.template || templateAnswers.template,
     author: options.author || answers.author,
-    subPath: options.subPath || answers.subPath,
+    path: options.path || answers.path,
     federation: options.federation || answers.federation,
-    runInstall: options.runInstall || answers.runInstall,
-    startDev: options.starDev || answers.startDev
+    install: options.install || answers.install,
+    start: options.starDev || answers.start
   };
 }
 

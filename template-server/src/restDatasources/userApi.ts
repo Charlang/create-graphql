@@ -11,15 +11,35 @@ class UserApi extends RESTDataSource {
     request.headers.set('Authorization', this.context.authorization);
   }
 
+  async refreshToken(prop: any) {
+    try {
+      return {
+        token: 'test',
+        refreshToken: 'refresh'
+      };
+    } catch (err) {
+      logger.error(err);
+    }
+  }
+
   menuReduce(res: any) {
     const { data = [] } = res && res.success && res;
     return data;
   }
 
   async getMenu() {
+    throw Error('TOKEN_EXPIRED');
     try {
-      const res = await this.get('/common/getMenu');
-      return this.menuReduce(res);
+      // const res = await this.get('/common/getMenu');
+      // return this.menuReduce(res);
+      return [{
+        code: 'test',
+        title: 'test-title',
+        subMenu: [{
+          code: 'sub',
+          title: 'sub-title'
+        }]
+      }] as any;
     } catch (err) {
       logger.error(err);
       const { extensions: { response = {} } = {} } = err;

@@ -5,6 +5,7 @@ export const typeDef = gql`
   extend type Query {
     getMenu: [Menu]
     getAllUser: [User]
+    refreshToken(tokenRequest: RefreshTokenRequest!): Token!
   }
 
   type User {
@@ -22,6 +23,17 @@ export const typeDef = gql`
     code: String
     title: String
   }
+
+  input RefreshTokenRequest {
+    refreshToken: String!
+    email: String!
+  }
+
+  type Token {
+    token: String
+    refreshToken: String
+  }
+
 `;
 
 export const resolvers = {
@@ -38,6 +50,12 @@ export const resolvers = {
       const users = await dataSources.userPg.getAllUser();
       if (users) {
         return users;
+      }
+    },
+    refreshToken: async (_: any, props: any, { dataSources }: {dataSources: IDataSources}) => {
+      const token = await dataSources.userApi.refreshToken(props);
+      if (token) {
+        return token;
       }
     },
   },

@@ -16,6 +16,7 @@ export const main = async () => {
     chalk.green.bold('\n ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ 🍀 ☘️ \n')
   );
   const args = program.parse(process.argv).opts();
+  console.error(args);
   const options: any = await promptForMissingOptions(args);
   options.targetDirectory = options.path === './' ? process.cwd() : `${process.cwd()}/${options.path}`;
   await tasks(options).run();

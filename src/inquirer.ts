@@ -4,7 +4,7 @@ import chalk from 'chalk';
 const promptForMissingOptions = async (options?: any) => {
  
   let templateAnswers = {
-    template: 'server'
+    template: 'Server'
   };
   if (!options.template) {
     templateAnswers = await inquirer.prompt([{
@@ -44,6 +44,15 @@ const promptForMissingOptions = async (options?: any) => {
     });
   }
 
+  if (templateAnswers.template === 'Client' ) {
+    questions.push({
+      type: 'input',
+      name: 'clientAppName',
+      message: 'Type your client SPA app name: ',
+      default: 'test'
+    });
+  }
+
   if (!options.install) {
     questions.push({
       type: 'confirm',
@@ -70,7 +79,8 @@ const promptForMissingOptions = async (options?: any) => {
     path: options.path || answers.path,
     federation: options.federation || answers.federation,
     install: options.install || answers.install,
-    start: options.starDev || answers.start
+    start: options.start || answers.start,
+    clientAppName: options.clientAppName || answers.clientAppName,
   };
 }
 

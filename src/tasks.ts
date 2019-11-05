@@ -11,7 +11,7 @@ const copyTemplateFiles = async (options: any) => {
   const currentFileUrl = import.meta.url;
   const templateDir = path.resolve(
     new URL(currentFileUrl).pathname,
-    '../../template-server'
+    `../../${options.template === 'Server' ? 'template-server' : 'template-client-spa'}`
   );
   const templateDirectory = templateDir;
   function streamPromise(stream: any) {
@@ -31,7 +31,10 @@ const copyTemplateFiles = async (options: any) => {
   vfs.src(`${templateDirectory}/**/*`)
   .pipe(through2.obj((file: any, enc: string, next) => {
     if (file.isBuffer()) {
-      const src = file.contents.toString().replace(new RegExp('%AUTHOR_NAME%', 'g'), options.author);
+      let src = file.contents.toString().replace(new RegExp('%AUTHOR_NAME%', 'g'), options.author);
+      if (options.template === 'Client') {
+        src = src.replace(new RegExp('%SINGLE_SPA_APP%', 'g'), options.clientAppName);
+      }
       file.contents = Buffer.from(src);
       next(null, file);
     } else {
@@ -43,7 +46,7 @@ const copyTemplateFiles = async (options: any) => {
 }
 
 const installDependencies = async (options: any) => {
-  const result = await execa('yarn', ['install'], {
+  const result = await execa('yarn', [options.template === 'Server' ? 'install' : 'install:all'], {
     cwd: options.targetDirectory,
   });
   if (result.failed) {
@@ -72,9 +75,9 @@ const tasks = (options: any) => new listr([
   {
     title: '[3-3] Start development watch',
     task: () => {
-      execa('yarn', ['watch'], {
-        cwd: options.targetDirectory,
-      });
+      execa('yarn', [options.template === 'Server' ? 'watch' : 'start:all'], {
+        cwd: options.targetDirectory
+      }).stdout.pipe(process.stdout);;
       return;
     },
     enabled: ctx => ctx.start === true,

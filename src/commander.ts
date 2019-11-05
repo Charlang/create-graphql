@@ -6,8 +6,9 @@ program
   .option('-f, --federation', 'Include Apollo federation gateway ?', true)
   .option('-a, --author', 'Project Author', 'test.graphql')
   .option('-p, --path', 'Project sub path')
-  .option('-i, --install', 'Install dependencies in the project ?', true)
-  .option('-s, --start', 'Start dev mode ?', true);
+  .option('-cn, --clientAppName', 'Client SPA name', 'test')
+  .option('-i, --install', 'Install dependencies in the project ?')
+  .option('-s, --start', 'Start dev mode ?');
 
 program
   .on('--help', function(){

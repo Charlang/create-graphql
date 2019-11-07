@@ -1,11 +1,17 @@
 {
-  "name": "create-graphql",
-  "version": "1.0.0",
-  "description": "Apollo GraphQL CLI",
+  "name": "create-apollo-gql",
+  "version": "0.1.2",
+  "description": "Apollo GraphQL CLI for both server side and client side",
   "main": "./lib/index.js",
   "bin": "./lib/index.js",
   "license": "MIT",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Charlang/create-graphql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Charlang/create-graphql/issues"
+  },
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' -r esm src/index.ts",
     "build": "tsc -p .",
@@ -16,7 +22,16 @@
     "graphql",
     "CLI",
     "node.js",
-    "typescript"
+    "typescript",
+    "commander",
+    "single-spa",
+    "axios",
+    "sequelize",
+    "express",
+    "jest",
+    "prettier",
+    "gulp",
+    "husky"
   ],
   "author": "Charlie.Lang",
   "dependencies": {

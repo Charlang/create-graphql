@@ -17,7 +17,7 @@
     "install:mock": "cd ./mocks && yarn install",
     "install:all": "yarn install && yarn install:mock"
   },
-  "author": "Charlie.Lang",
+  "author": "%AUTHOR_NAME%",
   "license": "MIT",
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.1",
@@ -25,6 +25,7 @@
     "@emotion/css": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@emotion/styled-base": "^10.0.24",
+    "apollo-link-context": "^1.0.19",
     "graphql": "^14.5.8",
     "lodash": "^4.17.15",
     "query-string": "^6.8.3",

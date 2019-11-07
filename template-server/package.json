@@ -1,10 +1,9 @@
 {
   "name": "graphql-server",
   "version": "1.0.0",
-  "description": "Create graphql api server template",
+  "description": "",
   "main": "index.js",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "watch": "gulp",
     "watch-gateway": "gulp --gulpfile ./gateway.gulpfile.js",
@@ -12,8 +11,7 @@
     "start": "node ./dist/app.js",
     "gateway": "node ./dist/gateway.js",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\"",
-    "test": "jest --verbose --detectOpenHandles --maxWorkers=1 --forceExit",
-    "sonar": "sonar-scanner -X"
+    "test": "jest --verbose --detectOpenHandles --maxWorkers=1 --forceExit"
   },
   "keywords": [
     "graphql",
@@ -23,7 +21,7 @@
     "server",
     "client"
   ],
-  "author": "Charlie.Lang",
+  "author": "%AUTHOR_NAME%",
   "dependencies": {
     "@apollo/federation": "^0.10.2",
     "@apollo/gateway": "^0.10.8",

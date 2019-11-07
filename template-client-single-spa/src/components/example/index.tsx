@@ -32,7 +32,7 @@ export const Index = () => {
     <div>
       <h3>Menu</h3>
       {loading && <p>Loading: {JSON.stringify(loading)}</p>}
-      {error && <p>error: {JSON.stringify(error)}</p>}
+      {error && <p>error[need to integrate with your BE api]: {JSON.stringify(error)}</p>}
       {data && <p>data: {JSON.stringify(data)}</p>}
     </div>
   );

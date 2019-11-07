@@ -48,7 +48,7 @@ const promptForMissingOptions = async (options?: any) => {
     questions.push({
       type: 'input',
       name: 'clientAppName',
-      message: 'Type your client SPA app name: ',
+      message: 'Type your client SPA app name, will be use as path also',
       default: 'test'
     });
   }

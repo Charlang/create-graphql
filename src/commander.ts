@@ -6,7 +6,7 @@ program
   .option('-f, --federation', 'Include Apollo federation gateway ?', true)
   .option('-a, --author', 'Project Author', 'test.graphql')
   .option('-p, --path', 'Project sub path')
-  .option('-cn, --clientAppName', 'Client SPA name', 'test')
+  .option('-cn, --clientAppName', 'Client SPA name, will be use as path also')
   .option('-i, --install', 'Install dependencies in the project ?')
   .option('-s, --start', 'Start dev mode ?');
 

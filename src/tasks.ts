@@ -11,7 +11,7 @@ const copyTemplateFiles = async (options: any) => {
   const currentFileUrl = import.meta.url;
   const templateDir = path.resolve(
     new URL(currentFileUrl).pathname,
-    `../../${options.template === 'Server' ? 'template-server' : 'template-client-spa'}`
+    `../../${options.template === 'Server' ? 'template-server' : 'template-client-single-spa'}`
   );
   const templateDirectory = templateDir;
   function streamPromise(stream: any) {
@@ -57,7 +57,7 @@ const installDependencies = async (options: any) => {
 
 const tasks = (options: any) => new listr([
   {
-    title: `[1-3] Copying templates files into ${chalk.italic.redBright.bold('./' + options.path)}`,
+    title: `[1-3] Copying templates files into below folder: \n         ${chalk.italic.redBright(options.targetDirectory)}`,
     task: async () => copyTemplateFiles(options),
   },
   {

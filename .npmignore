@@ -12,6 +12,7 @@ node_modules
 .rpt2_cache
 CODE_OF_CONDUCT.md
 yarn.lock
+.git
 
 build
 dist

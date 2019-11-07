@@ -73,8 +73,8 @@ async function getStatus() {
     const results = await Promise.all([
       axios.get(`${GRAPHQL_SERVER_API_A}/health-shallow`),
     ]);
-    const status = results[0].data;
-    userSuccess = status === 'ok';
+    const [{ data }] = results[0].data;
+    userSuccess = data === 'ok';
   } catch (err) {
     if (count < 10) {
       if (err.config.url.indexOf(GRAPHQL_SERVER_API_A) >= 0) {

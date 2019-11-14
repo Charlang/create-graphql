@@ -6,12 +6,29 @@ import execa from 'execa';
 import listr from 'listr';
 import chalk from 'chalk';
 
+const TEMPLATE_MAP ={
+  'Server': 'template-server',
+  'Client Single SPA': 'template-client-single-spa',
+  'Client CRA': 'template-cra'
+}
+
+const TEMPLATE_INSTALL ={
+  'Server': 'install',
+  'Client Single SPA': 'install:all',
+  'Client CRA': 'install'
+}
+
+const TEMPLATE_WATCH ={
+  'Server': 'watch',
+  'Client Single SPA': 'start:all',
+  'Client CRA': 'start'
+}
 const copyTemplateFiles = async (options: any) => {
   // @ts-ignore
   const currentFileUrl = import.meta.url;
   const templateDir = path.resolve(
     new URL(currentFileUrl).pathname,
-    `../../${options.template === 'Server' ? 'template-server' : 'template-client-single-spa'}`
+    `../../${TEMPLATE_MAP[options.template as 'Server']}`
   );
   const templateDirectory = templateDir;
   function streamPromise(stream: any) {
@@ -32,7 +49,7 @@ const copyTemplateFiles = async (options: any) => {
   .pipe(through2.obj((file: any, enc: string, next) => {
     if (file.isBuffer()) {
       let src = file.contents.toString().replace(new RegExp('%AUTHOR_NAME%', 'g'), options.author);
-      if (options.template === 'Client') {
+      if (options.template !== 'Server') {
         src = src.replace(new RegExp('%SINGLE_SPA_APP%', 'g'), options.clientAppName);
       }
       file.contents = Buffer.from(src);
@@ -46,7 +63,7 @@ const copyTemplateFiles = async (options: any) => {
 }
 
 const installDependencies = async (options: any) => {
-  const result = await execa('yarn', [options.template === 'Server' ? 'install' : 'install:all'], {
+  const result = await execa('yarn', [TEMPLATE_INSTALL[options.template as 'Server']], {
     cwd: options.targetDirectory,
   });
   if (result.failed) {
@@ -75,7 +92,7 @@ const tasks = (options: any) => new listr([
   {
     title: '[3-3] Start development watch',
     task: () => {
-      execa('yarn', [options.template === 'Server' ? 'watch' : 'start:all'], {
+      execa('yarn', [TEMPLATE_WATCH[options.template as 'Server']], {
         cwd: options.targetDirectory
       }).stdout.pipe(process.stdout);;
       return;

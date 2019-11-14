@@ -21,6 +21,7 @@
     ],
     "exclude": [
         "template-server/**/*",
-        "template-client/**/*"
+        "template-cra/**/*",
+        "template-client-single-spa/**/*"
     ]
 }

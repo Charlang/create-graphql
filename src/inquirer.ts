@@ -1,6 +1,12 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 
+const DEFAULT_PATH ={
+  'Server': 'server',
+  'Client Single SPA': 'single-spa',
+  'Client CRA': 'cra'
+}
+
 const promptForMissingOptions = async (options?: any) => {
  
   let templateAnswers = {
@@ -11,7 +17,7 @@ const promptForMissingOptions = async (options?: any) => {
       type: 'list',
       name: 'template',
       message: 'Which project template to use ?',
-      choices: ['Client', 'Server'],
+      choices: ['Client Single SPA', 'Client CRA', 'Server'],
       default: 'Server'
     }]);
   }
@@ -39,12 +45,12 @@ const promptForMissingOptions = async (options?: any) => {
     questions.push({
       type: 'input',
       name: 'path',
-      message: `Project path (default ${chalk.italic.redBright.bold('./' + (templateAnswers.template || '').toLowerCase())})`,
-      default: (templateAnswers.template || 'server').toLowerCase(),
+      message: `Project path (default ${chalk.italic.redBright.bold('./' + (DEFAULT_PATH[templateAnswers.template as 'Server'] || '').toLowerCase())})`,
+      default: (DEFAULT_PATH[templateAnswers.template as 'Server']),
     });
   }
 
-  if (templateAnswers.template === 'Client' ) {
+  if (templateAnswers.template !== 'Server' ) {
     questions.push({
       type: 'input',
       name: 'clientAppName',

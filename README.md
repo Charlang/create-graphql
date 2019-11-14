@@ -1,4 +1,4 @@
-# create-apollo-graphql
+# create-graphql
 
 It's could be boilerplate to create GraphQL application on both node.js server app and single spa client app.
 
@@ -17,7 +17,7 @@ If something doesn’t work, please file an [issue](https://github.com/Charlang/
 
 ## How to use
 
-    $npx create-apollo-graphql
+    $npx create-apollo-gql
 
 ## Why Apollo GraphQL
 

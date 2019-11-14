@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Global, css } from '@emotion/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/styles';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <div>
+  <ThemeProvider theme={theme}>
     <Global
       styles={css`
         body {
@@ -14,8 +16,9 @@ ReactDOM.render(
       `}
     />
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+    <CssBaseline />
     <App />
-  </div>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

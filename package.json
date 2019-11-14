@@ -1,6 +1,6 @@
 {
   "name": "create-apollo-gql",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Apollo GraphQL CLI for both server side and client side",
   "main": "./lib/index.js",
   "bin": "./lib/index.js",

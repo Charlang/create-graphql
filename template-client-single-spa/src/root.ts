@@ -14,10 +14,10 @@ export const setPublicPath = (path: any) => {
 };
 
 function domElementGetter() {
-  let el = document.getElementById('%SINGLE_SPA_APP%');
+  let el = document.getElementById('_SINGLE_SPA_APP_');
   if (!el) {
     el = document.createElement('div');
-    el.id = '%SINGLE_SPA_APP%';
+    el.id = '_SINGLE_SPA_APP_';
     document.body.appendChild(el);
   }
   return el;

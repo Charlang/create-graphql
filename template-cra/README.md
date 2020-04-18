@@ -1,3 +1,3 @@
-# %SINGLE_SPA_APP%
+# _SINGLE_SPA_APP_
 
 TBD

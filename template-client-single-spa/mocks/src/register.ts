@@ -8,11 +8,11 @@ declare global {
   }
 }
 
-fetch('/app/%SINGLE_SPA_APP%/manifest')
+fetch('/app/_SINGLE_SPA_APP_/manifest')
   .then((response) => response.json())
   .then((app) => {
     const combineEnv = { ...(app && app.env) };
-    singleSpa.registerApplication('%SINGLE_SPA_APP%', () => window.System.import(app.js[0]), () => true, {
+    singleSpa.registerApplication('_SINGLE_SPA_APP_', () => window.System.import(app.js[0]), () => true, {
       app,
       microApp: true,
       environmentVariables: combineEnv,

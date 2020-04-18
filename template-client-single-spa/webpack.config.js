@@ -1,13 +1,13 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const publicPath = '/app/%SINGLE_SPA_APP%/';
+const publicPath = '/app/_SINGLE_SPA_APP_/';
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/root.ts'),
   output: {
-    filename: '%SINGLE_SPA_APP%.[hash].js',
-    library: '%SINGLE_SPA_APP%',
+    filename: '_SINGLE_SPA_APP_.[hash].js',
+    library: '_SINGLE_SPA_APP_',
     libraryTarget: 'amd',
     path: path.resolve(__dirname, 'dist'),
     publicPath,

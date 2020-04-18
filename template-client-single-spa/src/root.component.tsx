@@ -11,7 +11,7 @@ export const Index = () => {
     <ApolloProvider client={client}>
       <Tabs />
       <BrowserRouter>
-        <Route path="/*/%SINGLE_SPA_APP%" render={() => <Panel />} />
+        <Route path="/*/_SINGLE_SPA_APP_" render={() => <Panel />} />
       </BrowserRouter>
     </ApolloProvider>
   );

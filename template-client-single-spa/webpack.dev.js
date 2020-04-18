@@ -16,9 +16,9 @@ config.devServer = {
     'Access-Control-Allow-Origin': '*',
   },
   proxy: {
-    '/app/%SINGLE_SPA_APP%/': {
+    '/app/_SINGLE_SPA_APP_/': {
       target: 'http://localhost:4006',
-      pathRewrite: { '^/app/%SINGLE_SPA_APP%': '' },
+      pathRewrite: { '^/app/_SINGLE_SPA_APP_': '' },
     },
   },
 };

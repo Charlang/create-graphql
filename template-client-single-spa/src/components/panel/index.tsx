@@ -5,8 +5,9 @@ import Menu from '../example';
 
 const Index = () => (
   <div>
-    This is a test
+    Welcome to your first single spa react micro application.
     <Menu />
+    This is a test!
   </div>
 );
 

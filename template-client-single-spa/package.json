@@ -1,5 +1,5 @@
 {
-  "name": "%SINGLE_SPA_APP%",
+  "name": "_SINGLE_SPA_APP_",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack --config ./webpack.config.js -p",
     "start": "webpack-dev-server --config ./webpack.dev.js --port 4006",
-    "start:all": "concurrently --kill-others --kill-others-on-fail -p name --names \"config,common-deps,%SINGLE_SPA_APP%\" \"yarn start:config\" \"yarn start:common-deps\" \"yarn start\"",
+    "start:all": "concurrently --kill-others --kill-others-on-fail -p name --names \"config,common-deps,_SINGLE_SPA_APP_\" \"yarn start:config\" \"yarn start:common-deps\" \"yarn start\"",
     "start:config": "cd ./mocks && webpack-dev-server --config ./webpack.register.config.dev.js --port 4007",
     "start:common-deps": "cd ./mocks && webpack-dev-server --config ./webpack.common-deps.config.dev.js --port 4005",
     "build:all": "yarn build:config && yarn build:common-deps && yarn build",

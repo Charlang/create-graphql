@@ -1,27 +1,28 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 
-const DEFAULT_PATH ={
-  'Server': 'server',
-  'Client Single SPA': 'single-spa',
-  'Client CRA': 'cra'
-}
+const DEFAULT_PATH = {
+  Server: 'test/server',
+  'Client Single SPA': 'test/single-spa',
+  'Client CRA': 'test/cra',
+};
 
 const promptForMissingOptions = async (options?: any) => {
- 
   let templateAnswers = {
-    template: 'Server'
+    template: 'Server',
   };
   if (!options.template) {
-    templateAnswers = await inquirer.prompt([{
-      type: 'list',
-      name: 'template',
-      message: 'Which project template to use ?',
-      choices: ['Client Single SPA', 'Client CRA', 'Server'],
-      default: 'Server'
-    }]);
+    templateAnswers = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'template',
+        message: 'Which project template to use ?',
+        choices: ['Client Single SPA', 'Client CRA', 'Server'],
+        default: 'Server',
+      },
+    ]);
   }
-  
+
   const questions = [];
   if (!options.federation) {
     questions.push({
@@ -45,17 +46,19 @@ const promptForMissingOptions = async (options?: any) => {
     questions.push({
       type: 'input',
       name: 'path',
-      message: `Project path (default ${chalk.italic.redBright.bold('./' + (DEFAULT_PATH[templateAnswers.template as 'Server'] || '').toLowerCase())})`,
-      default: (DEFAULT_PATH[templateAnswers.template as 'Server']),
+      message: `Project path (default ${chalk.italic.redBright.bold(
+        './' + (DEFAULT_PATH[templateAnswers.template as 'Server'] || '').toLowerCase(),
+      )})`,
+      default: DEFAULT_PATH[templateAnswers.template as 'Server'],
     });
   }
 
-  if (templateAnswers.template !== 'Server' ) {
+  if (templateAnswers.template !== 'Server') {
     questions.push({
       type: 'input',
       name: 'clientAppName',
       message: 'Type your client SPA app name, will be use as path also',
-      default: 'test'
+      default: 'test',
     });
   }
 
@@ -76,7 +79,7 @@ const promptForMissingOptions = async (options?: any) => {
       default: true,
     });
   }
- 
+
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
@@ -88,6 +91,6 @@ const promptForMissingOptions = async (options?: any) => {
     start: options.start || answers.start,
     clientAppName: options.clientAppName || answers.clientAppName,
   };
-}
+};
 
 export default promptForMissingOptions;

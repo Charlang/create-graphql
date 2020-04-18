@@ -3,5 +3,5 @@ export function prefix(location: any, ...prefixes: any) {
 }
 
 export function enabled(location: any) {
-  return prefix(location, '%SINGLE_SPA_APP%');
+  return prefix(location, '_SINGLE_SPA_APP_');
 }

@@ -10,14 +10,13 @@ program
   .option('-i, --install', 'Install dependencies in the project ?')
   .option('-s, --start', 'Start dev mode ?');
 
-program
-  .on('--help', function(){
-    console.log('')
-    console.log('Examples:');
-    console.log('  $ npx create-apollo-gql --help');
-    console.log('  $ npx create-apollo-gql -h');
-    console.log('  $ npx create-apollo-gql -t Server -p server');
-    console.log('  $ npx create-apollo-gql -t Client -p ./ -cn someapp');
-  });
+program.on('--help', function () {
+  console.log('');
+  console.log('Examples:');
+  console.log('  $ npx create-apollo-gql --help');
+  console.log('  $ npx create-apollo-gql -h');
+  console.log('  $ npx create-apollo-gql -t Server -p server');
+  console.log('  $ npx create-apollo-gql -t Client -p ./ -cn someapp');
+});
 
 export default program;

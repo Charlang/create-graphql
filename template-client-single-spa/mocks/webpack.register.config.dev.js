@@ -15,12 +15,12 @@ config.devServer = {
       target: 'http://localhost:4005',
       pathRewrite: { '^/common': '' },
     },
-    '/app/%SINGLE_SPA_APP%/': {
+    '/app/_SINGLE_SPA_APP_/': {
       target: 'http://localhost:4006',
     },
-    '/graphql/%SINGLE_SPA_APP%': {
+    '/graphql/_SINGLE_SPA_APP_': {
       target: 'http://localhost:4001/graphql',
-      pathRewrite: { '^/%SINGLE_SPA_APP%': '' },
+      pathRewrite: { '^/_SINGLE_SPA_APP_': '' },
     },
   },
 };

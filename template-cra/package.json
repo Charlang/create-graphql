@@ -1,5 +1,5 @@
 {
-  "name": "%SINGLE_SPA_APP%",
+  "name": "_SINGLE_SPA_APP_",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

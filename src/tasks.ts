@@ -54,6 +54,8 @@ const copyTemplateFiles = async (options: any) => {
       `!${templateDirectory}/mocks/node_modules/**/*`,
       `!${templateDirectory}/node_modules`,
       `!${templateDirectory}/node_modules/**/*`,
+      `!${templateDirectory}/coverage`,
+      `!${templateDirectory}/coverage/**/*`,
     ])
     .pipe(
       through2.obj((file: any, enc: string, next) => {

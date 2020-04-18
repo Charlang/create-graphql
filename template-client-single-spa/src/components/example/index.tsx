@@ -1,6 +1,5 @@
 import React from 'react';
-import { gql } from '@apollo/client';
-import { useRefreshQuery } from './useRefreshQuery';
+import { gql, useQuery } from '@apollo/client';
 
 interface SubMenu {
   code: string;
@@ -27,7 +26,7 @@ const GET_MENU = gql`
 `;
 
 export const Index = () => {
-  const { loading, error, data } = useRefreshQuery<Menu>(GET_MENU);
+  const { loading, error, data } = useQuery<Menu>(GET_MENU);
   return (
     <div>
       <h3>Menu</h3>

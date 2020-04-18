@@ -1,0 +1,9 @@
+query refreshToken {
+  refreshToken(tokenRequest: {
+  	refreshToken: "123",
+    email: "dd"
+  }) {
+    token
+    refreshToken
+  }
+}

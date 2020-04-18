@@ -38,6 +38,15 @@ Deploy on dev / staging / production with docker image:
 
     docker build -t graphql-server .
 
+Consume on client with code generate:
+
+[Apollo tooling](https://github.com/apollographql/apollo-tooling)
+
+```
+cd query
+npx apollo client:codegen --target=typescript --endpoint=http://localhost:4001/graphql --includes getMenu.graphql
+```
+
 Run `dev`:
 
     docker run -e NODE_ENV='dev' --name graphql-server -p 4000:4000 -d internal-graphql-server

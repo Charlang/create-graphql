@@ -15,7 +15,7 @@ class UserApi extends RESTDataSource {
     try {
       return {
         token: 'test',
-        refreshToken: 'refresh'
+        refreshToken: (new Date()).toString()
       };
     } catch (err) {
       logger.error(err);
@@ -28,7 +28,6 @@ class UserApi extends RESTDataSource {
   }
 
   async getMenu() {
-    throw Error('TOKEN_EXPIRED');
     try {
       // const res = await this.get('/common/getMenu');
       // return this.menuReduce(res);

@@ -30,14 +30,14 @@ const theme = () => {
       error: red,
       background: {
         paper: '#fff',
-        default: '#fafafa'
+        default: '#fafafa',
       },
       text: {
         primary: '#2A2A2A',
         secondary: '#54545E',
         disabled: '#A9A9AE',
-        hint: '#d1d2d5'
-      }
+        hint: '#d1d2d5',
+      },
     },
     typography: {
       htmlFontSize: 16,
@@ -50,11 +50,11 @@ const theme = () => {
         textTransform: 'unset',
         fontSize: 16,
         fontWeight: 500,
-        lineHeight: 2.15
-      }
+        lineHeight: 1.5,
+      },
     },
     shape: {
-      borderRadius: 4
+      borderRadius: 4,
     },
     zIndex: {
       mobileStepper: 1000,
@@ -62,8 +62,8 @@ const theme = () => {
       drawer: 1200,
       modal: 1300,
       snackbar: 1400,
-      tooltip: 1500
-    }
+      tooltip: 1500,
+    },
   });
 };
 

@@ -1,0 +1,10 @@
+query getMenu {
+  getMenu {
+    code
+    title
+    subMenu {
+      code
+      title
+    }
+  }
+}

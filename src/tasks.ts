@@ -5,6 +5,8 @@ import through2 from 'through2';
 import execa from 'execa';
 import Listr from 'listr';
 import chalk from 'chalk';
+// @ts-ignore
+import throughFilter from 'through2-filter';
 
 const TEMPLATE_MAP = {
   Server: 'template-server',
@@ -46,7 +48,13 @@ const copyTemplateFiles = async (options: any) => {
   }
   const out = vfs.dest(options.targetDirectory);
   vfs
-    .src([`${templateDirectory}/**/*`, `!${templateDirectory}/node_modules*`])
+    .src([
+      `${templateDirectory}/**/*`,
+      `!${templateDirectory}/mocks/node_modules`,
+      `!${templateDirectory}/mocks/node_modules/**/*`,
+      `!${templateDirectory}/node_modules`,
+      `!${templateDirectory}/node_modules/**/*`,
+    ])
     .pipe(
       through2.obj((file: any, enc: string, next) => {
         if (file.isBuffer()) {

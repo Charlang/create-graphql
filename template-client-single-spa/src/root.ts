@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
 import { property } from 'lodash';
+import rootComponent from './root.component';
 
 export const setPublicPath = (path: any) => {
   return Promise.all([path]).then((values) => {
@@ -27,8 +28,7 @@ const reactLifeCycles = singleSpaReact({
   React,
   // @ts-ignore
   ReactDOM,
-  // eslint-disable-next-line import/no-unresolved
-  loadRootComponent: () => import('./root.component').then(property('default')),
+  rootComponent,
   domElementGetter
 });
 
